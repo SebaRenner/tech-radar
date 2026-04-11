@@ -1,0 +1,64 @@
+<svg viewBox="0 0 800 800" xmlns="http://www.w3.org/2000/svg" class="radar-svg">
+    
+  <defs>
+    @for (path of quadrantPaths; track $index) {
+      <clipPath [id]="'quadrant-' + $index">
+        <path [attr.d]="path" />
+      </clipPath>
+    }
+  </defs>
+
+  <!-- colored rings -->
+  @for (color of quadrantColors; track $index; let qi = $index) {
+    @for (r of rings; track $index) {
+      <circle
+        [attr.cx]="cx"
+        [attr.cy]="cy"
+        [attr.r]="r"
+        [attr.fill]="color"
+        [attr.fill-opacity]="ringOpacity(r)"
+        [attr.clip-path]="'url(#quadrant-' + qi + ')'"
+      />
+    }
+  }
+
+  <!-- white ring borders -->
+  @for (r of rings; track $index) {
+    <circle [attr.cx]="cx" [attr.cy]="cy" [attr.r]="r"
+      fill="none" stroke="white" stroke-width="1.5" />
+  }
+
+  <!-- quadrant dividers -->
+  <line [attr.x1]="cx" y1="40" [attr.x2]="cx" y2="760" stroke="white" stroke-width="1.5" />
+  <line x1="40" [attr.y1]="cy" x2="760" [attr.y2]="cy" stroke="white" stroke-width="1.5" />
+
+  <!-- quadrant labels -->
+  @for (lines of quadrantLabels; track $index; let qi = $index) {
+    <text
+        [attr.x]="quadrantLabelPos[qi].x"
+        [attr.y]="quadrantLabelPos[qi].y"
+        [attr.fill]="quadrantTextColors[qi]"
+        class="quadrant-label"
+        text-anchor="middle">
+        @for (line of lines; track $index; let li = $index) {
+        <tspan
+            [attr.x]="quadrantLabelPos[qi].x"
+            [attr.dy]="li === 0 ? 0 : 18">
+            {{ line }}
+        </tspan>
+        }
+    </text>
+}
+
+  <!-- ring labels -->
+  @for (label of ringLabels; track $index) {
+    <text
+      [attr.x]="ringLabelPos($index).x"
+      [attr.y]="ringLabelPos($index).y"
+      class="ring-label"
+      text-anchor="middle">
+      {{ label }}
+    </text>
+  }
+
+</svg>

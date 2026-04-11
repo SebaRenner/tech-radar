@@ -8,7 +8,7 @@ import { Component } from '@angular/core';
 export class RadarCanvasComponent {
   readonly cx = 400;
   readonly cy = 400;
-  readonly rings = [90, 180, 270, 360];
+  readonly rings = [130, 210, 290, 360];
   readonly ringLabels = ['Adopt', 'Trial', 'Assess', 'Caution'];
 
   readonly quadrantColors = ['#378ADD', '#1D9E75', '#EF9F27', '#E05C5C'];
@@ -17,7 +17,7 @@ export class RadarCanvasComponent {
     ['Techniques'],
     ['Tools'],
     ['Platforms'],
-    ['Languages &', 'Frameworks'],  // split here
+    ['Languages &', 'Frameworks'],
   ];
 
   readonly quadrantPaths = [

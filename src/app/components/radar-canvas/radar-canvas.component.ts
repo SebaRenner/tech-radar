@@ -16,22 +16,22 @@ export class RadarCanvasComponent {
   readonly quadrantLabels = [
     ['Techniques'],
     ['Tools'],
-    ['Platforms'],
     ['Languages &', 'Frameworks'],
+    ['Platforms'],
   ];
 
   readonly quadrantPaths = [
-    'M400,400 L400,0 A400,400 0 0,1 800,400 Z',
-    'M400,400 L800,400 A400,400 0 0,1 400,800 Z',
-    'M400,400 L400,800 A400,400 0 0,1 0,400 Z',
-    'M400,400 L0,400 A400,400 0 0,1 400,0 Z',
+    'M400,400 L0,400 A400,400 0 0,1 400,0 Z',     // [0] top-left     → Techniques
+    'M400,400 L400,0 A400,400 0 0,1 800,400 Z',   // [1] top-right    → Tools
+    'M400,400 L800,400 A400,400 0 0,1 400,800 Z', // [2] bottom-right → Languages & Frameworks
+    'M400,400 L400,800 A400,400 0 0,1 0,400 Z',   // [3] bottom-left  → Platforms
   ];
 
   readonly quadrantLabelPos = [
     { x: 95, y: 68 },   // Techniques
     { x: 730, y: 68 },  // Tools
-    { x: 90, y: 726 },  // Platforms
     { x: 700, y: 726 }, // Languages & Frameworks
+    { x: 90, y: 726 },  // Platforms
   ];
   
   ringOpacity(r: number): number {

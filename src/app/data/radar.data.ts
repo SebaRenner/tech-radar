@@ -158,12 +158,6 @@ export const blips: Blip[] = [
         quadrant: Quadrant.Platforms
     },
     {
-        name: "KurrentDB",
-        description: "A purpose-built event store database (formerly EventStoreDB) optimised for event sourcing workloads, offering persistent subscriptions and stream-based storage.",
-        ring: Ring.Caution,
-        quadrant: Quadrant.Platforms
-    },
-     {
         name: "Azure Service Bus",
         description: "A fully managed enterprise message broker supporting queues and pub/sub topics, enabling reliable asynchronous communication between decoupled services.",
         ring: Ring.Adopt,

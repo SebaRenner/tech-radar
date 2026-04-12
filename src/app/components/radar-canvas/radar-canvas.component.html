@@ -66,7 +66,7 @@
     <a [attr.aria-label]="blip.name" style="cursor: pointer" (click)="blipSelected.emit(blip)"
         (mouseenter)="onBlipEnter(blip)"
         (mouseleave)="onBlipLeave()">
-      <g [attr.transform]="'translate(' + blipPosition(blip, i).x + ',' + blipPosition(blip, i).y + ')'">
+      <g [attr.transform]="'translate(' + blipPosition(blip).x + ',' + blipPosition(blip).y + ')'">
         <circle r="14" [attr.fill]="blipFill" />
         <text x="0" y="4" class="blip-label" text-anchor="middle">
           {{ i + 1 }}
@@ -77,7 +77,7 @@
 
   <!-- tooltip -->
   @if (hoveredBlip) {
-    <g [attr.transform]="'translate(' + blipPosition(hoveredBlip, blips().indexOf(hoveredBlip)).x + ',' + (blipPosition(hoveredBlip, blips().indexOf(hoveredBlip)).y - 30) + ')'">
+    <g [attr.transform]="'translate(' + blipPosition(hoveredBlip).x + ',' + (blipPosition(hoveredBlip).y - 30) + ')'">
       <rect x="-40" y="-16" width="80" height="24" rx="4" [attr.fill]="blipFill" />
       <polygon points="0,14 -6,8 6,8" [attr.fill]="blipFill" />
       <text class="tooltip-label">

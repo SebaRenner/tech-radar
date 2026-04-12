@@ -19,3 +19,10 @@
   letter-spacing: 0.06em;
   text-transform: uppercase;
 }
+
+.blip-label {
+  font-size: 12px;
+  font-weight: 500;
+  font-family: var(--font-sans, sans-serif);
+  fill: white;
+}

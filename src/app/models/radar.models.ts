@@ -8,8 +8,8 @@ export enum Ring {
 export enum Quadrant {
     Techniques = 0,
     Tools = 1,
-    Platforms = 2,
-    LanguagesAndFrameworks = 3
+    LanguagesAndFrameworks = 2,
+    Platforms = 3,
 }
 
 export interface Blip {

@@ -187,4 +187,10 @@ export const blips: Blip[] = [
         ring: Ring.Trial,
         quadrant: Quadrant.Platforms
     },
+    {
+        name: "Azure Application Insights",
+        description: "A cloud-native application performance monitoring service providing real-time telemetry, distributed tracing, and diagnostics deeply integrated with the Azure ecosystem.",
+        ring: Ring.Adopt,
+        quadrant: Quadrant.Platforms
+    },
 ];

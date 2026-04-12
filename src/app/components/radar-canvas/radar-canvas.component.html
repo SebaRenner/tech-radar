@@ -78,7 +78,14 @@
   <!-- tooltip -->
   @if (hoveredBlip) {
     <g [attr.transform]="'translate(' + blipPosition(hoveredBlip).x + ',' + (blipPosition(hoveredBlip).y - 30) + ')'">
-      <rect x="-40" y="-16" width="80" height="24" rx="4" [attr.fill]="blipFill" />
+      <rect
+        [attr.x]="-tooltipWidth(hoveredBlip) / 2"
+        y="-16"
+        [attr.width]="tooltipWidth(hoveredBlip)"
+        height="24"
+        rx="4"
+        [attr.fill]="blipFill"
+      />
       <polygon points="0,14 -6,8 6,8" [attr.fill]="blipFill" />
       <text class="tooltip-label">
         {{ hoveredBlip.name }}

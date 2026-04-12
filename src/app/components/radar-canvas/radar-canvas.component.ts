@@ -20,6 +20,10 @@ export class RadarCanvasComponent implements OnInit {
   readonly ringLabels = ['Adopt', 'Trial', 'Assess', 'Caution'];
   readonly blipFill = '#2C3E50';
 
+  readonly tooltipMinWidth = 70;
+  readonly tooltipPadding = 10;
+  readonly tooltipCharWidth = 5.1;
+
   readonly quadrantColors = ['#378ADD', '#1D9E75', '#EF9F27', '#E05C5C'];
   readonly quadrantTextColors = ['#185FA5', '#0F6E56', '#854F0B','#7B1F1F'];
   readonly quadrantLabels = [
@@ -53,6 +57,10 @@ export class RadarCanvasComponent implements OnInit {
 
   onBlipLeave() {
     this.hoveredBlip = null;
+  }
+
+  tooltipWidth(blip: Blip): number {
+    return Math.max(this.tooltipMinWidth, blip.name.length * this.tooltipCharWidth + this.tooltipPadding * 2);
   }
   
   ringOpacity(r: number): number {

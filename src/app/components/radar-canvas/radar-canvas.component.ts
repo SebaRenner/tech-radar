@@ -1,4 +1,4 @@
-import { Component, input } from '@angular/core';
+import { Component, input, output } from '@angular/core';
 import { Blip } from '../../models/radar.models';
 
 @Component({
@@ -7,7 +7,8 @@ import { Blip } from '../../models/radar.models';
   styleUrl: './radar-canvas.component.scss'
 })
 export class RadarCanvasComponent {
-  blips = input.required<Blip[]>(); 
+  blips = input.required<Blip[]>();
+  blipSelected = output<Blip>();
 
   readonly cx = 400;
   readonly cy = 400;

@@ -11,4 +11,8 @@ import { blips } from './data/radar.data';
 })
 export class App {
   readonly blips: Blip[] = blips;
+
+  onBlipSelected(blip: Blip) {
+    console.log('Selected blip:', blip);
+  }
 }

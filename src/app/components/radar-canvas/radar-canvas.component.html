@@ -63,7 +63,7 @@
 
   <!-- blips -->
   @for (blip of blips(); track blip; let i = $index) {
-    <a [attr.aria-label]="blip.name" style="cursor: pointer">
+    <a [attr.aria-label]="blip.name" style="cursor: pointer" (click)="blipSelected.emit(blip)">
       <g [attr.transform]="'translate(' + blipPosition(blip, i).x + ',' + blipPosition(blip, i).y + ')'">
         <circle r="14" [attr.fill]="blipFill" />
         <text x="0" y="4" class="blip-label" text-anchor="middle">

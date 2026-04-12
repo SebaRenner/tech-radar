@@ -10,6 +10,8 @@ export class RadarCanvasComponent {
   blips = input.required<Blip[]>();
   blipSelected = output<Blip>();
 
+  hoveredBlip: Blip | null = null;
+
   readonly cx = 400;
   readonly cy = 400;
   readonly rings = [130, 210, 290, 360];
@@ -38,6 +40,14 @@ export class RadarCanvasComponent {
     { x: 700, y: 726 }, // Languages & Frameworks
     { x: 90, y: 726 },  // Platforms
   ];
+
+  onBlipEnter(blip: Blip) {
+    this.hoveredBlip = blip;
+  }
+
+  onBlipLeave() {
+    this.hoveredBlip = null;
+  }
   
   ringOpacity(r: number): number {
     const index = this.rings.indexOf(r);

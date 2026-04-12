@@ -13,4 +13,4 @@ export const blips: Blip[] = [
         ring: Ring.Trial,
         quadrant: Quadrant.Tools
     }
-]; 
+];

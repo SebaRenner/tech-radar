@@ -193,4 +193,40 @@ export const blips: Blip[] = [
         ring: Ring.Adopt,
         quadrant: Quadrant.Platforms
     },
+    {
+        name: "Azure SQL",
+        description: "A fully managed cloud database service based on the MSSQL engine, offering built-in high availability, automated backups, and native integration with the Azure platform.",
+        ring: Ring.Adopt,
+        quadrant: Quadrant.Platforms
+    },
+        {
+        name: "CI/CD",
+        description: "The practice of automating build, test, and deployment pipelines to enable frequent, reliable software delivery with minimal manual intervention.",
+        ring: Ring.Adopt,
+        quadrant: Quadrant.Techniques
+    },
+    {
+        name: "Renovate Bot",
+        description: "An automated dependency update tool that raises pull requests for outdated packages, with highly configurable scheduling, grouping, and auto-merge rules.",
+        ring: Ring.Assess,
+        quadrant: Quadrant.Tools
+    },
+    {
+        name: "AI Coding Assistant",
+        description: "The practice of leveraging large language model-powered tools to assist with code generation, refactoring, documentation, and problem solving during development.",
+        ring: Ring.Trial,
+        quadrant: Quadrant.Techniques
+    },
+    {
+        name: "Claude",
+        description: "Anthropic's AI assistant, used for code generation, architectural reasoning, documentation, and complex problem solving across the development lifecycle.",
+        ring: Ring.Trial,
+        quadrant: Quadrant.Tools
+    },
+    {
+        name: "GitHub Copilot",
+        description: "An AI-powered coding assistant integrated directly into VS Code, offering inline code completions, chat, and context-aware suggestions backed by OpenAI models.",
+        ring: Ring.Assess,
+        quadrant: Quadrant.Tools
+    },
 ];

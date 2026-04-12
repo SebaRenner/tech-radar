@@ -16,7 +16,7 @@ export class RadarCanvasComponent implements OnInit {
 
   readonly cx = 400;
   readonly cy = 400;
-  readonly rings = [140, 220, 290, 360];
+  readonly rings = [150, 220, 290, 360];
   readonly ringLabels = ['Adopt', 'Trial', 'Assess', 'Caution'];
   readonly blipFill = '#2C3E50';
 

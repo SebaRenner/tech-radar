@@ -241,4 +241,16 @@ export const blips: Blip[] = [
         ring: Ring.Trial,
         quadrant: Quadrant.LanguagesAndFrameworks
     },
+    {
+        name: "Quantum Development Kit",
+        description: "Microsoft's SDK for quantum computing, including the Q# language and Azure Quantum integration, currently limited to simulation and early experimentation for most real-world workloads.",
+        ring: Ring.Caution,
+        quadrant: Quadrant.LanguagesAndFrameworks
+    },
+    {
+        name: "Medallion Architecture",
+        description: "A data design pattern that organises a data lakehouse into Bronze (raw), Silver (cleaned), and Gold (business-ready) layers, progressively refining data quality and structure.",
+        ring: Ring.Trial,
+        quadrant: Quadrant.Techniques
+    },
 ];

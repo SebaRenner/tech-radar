@@ -10,7 +10,7 @@ import { blips } from './data/radar.data';
   styleUrl: './app.scss'
 })
 export class App {
-  readonly blips: Blip[] = blips;
+  readonly blips: Blip[] = blips.sort((a, b) => a.quadrant - b.quadrant);
 
   onBlipSelected(blip: Blip) {
     console.log('Selected blip:', blip);

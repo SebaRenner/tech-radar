@@ -2,10 +2,11 @@ import { Component, signal } from '@angular/core';
 import { RadarCanvasComponent } from './components/radar-canvas/radar-canvas.component';
 import { Blip } from './models/radar.models';
 import { blips } from './data/radar.data';
+import { FooterComponent } from "./components/footer/footer.component";
 
 @Component({
   selector: 'app-root',
-  imports: [RadarCanvasComponent],
+  imports: [RadarCanvasComponent, FooterComponent],
   templateUrl: './app.html',
   styleUrl: './app.scss'
 })

@@ -229,4 +229,16 @@ export const blips: Blip[] = [
         ring: Ring.Assess,
         quadrant: Quadrant.Tools
     },
+    {
+        name: "Microservices Architecture",
+        description: "An architectural style that structures an application as a collection of small, independently deployable services each responsible for a specific business capability.",
+        ring: Ring.Adopt,
+        quadrant: Quadrant.Techniques
+    },
+    {
+        name: "gRPC",
+        description: "A high-performance, contract-first RPC framework using Protocol Buffers for efficient binary serialization, well suited for internal service-to-service communication.",
+        ring: Ring.Trial,
+        quadrant: Quadrant.LanguagesAndFrameworks
+    },
 ];

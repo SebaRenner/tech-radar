@@ -253,4 +253,40 @@ export const blips: Blip[] = [
         ring: Ring.Trial,
         quadrant: Quadrant.Techniques
     },
+    {
+        name: "Low-Code Engines",
+        description: "Platforms that enable application development through visual configuration and minimal hand-written code, trading long-term flexibility and testability for short-term delivery speed.",
+        ring: Ring.Caution,
+        quadrant: Quadrant.Platforms
+    },
+    {
+        name: "Azure Storage Account",
+        description: "Azure's foundational cloud storage service supporting blobs, queues, tables, and file shares, providing durable and highly available object storage for a wide range of workloads.",
+        ring: Ring.Trial,
+        quadrant: Quadrant.Platforms
+    },
+    {
+        name: "Azure Key Vault",
+        description: "A managed Azure service for securely storing and accessing secrets, certificates, and cryptographic keys, with fine-grained access control and full audit logging.",
+        ring: Ring.Adopt,
+        quadrant: Quadrant.Platforms
+    },
+    {
+        name: "Microsoft Teams App Development",
+        description: "Building integrated Teams applications spanning bots, messaging extensions, tabs, adaptive cards, and SSO — leveraging the Teams extensibility model within the Microsoft 365 ecosystem.",
+        ring: Ring.Adopt,
+        quadrant: Quadrant.LanguagesAndFrameworks
+    },
+    {
+        name: "Microsoft Graph API",
+        description: "Microsoft's unified REST API surface for accessing data and services across Microsoft 365, including users, mail, calendar, Teams, and SharePoint — enabling deep integration with the Microsoft ecosystem.",
+        ring: Ring.Adopt,
+        quadrant: Quadrant.Platforms
+    },
+    {
+        name: "Transcription Pipelines",
+        description: "The practice of orchestrating end-to-end audio-to-text workflows covering capture, transcription, post-processing, and storage — enabling structured, searchable output from spoken content such as meetings, calls, or recordings.",
+        ring: Ring.Trial,
+        quadrant: Quadrant.Techniques
+    },
 ];

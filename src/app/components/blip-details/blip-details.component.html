@@ -1,0 +1,7 @@
+@if (blip(); as b) {
+  <div class="detail-card">
+    <app-blip-chips [blip]="b" />
+    <p class="name">{{ b.name }}</p>
+    <p class="description">{{ b.description }}</p>
+  </div>
+}

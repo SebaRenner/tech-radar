@@ -9,6 +9,6 @@ import { BlipChipsComponent } from '../blip-chips/blip-chips.component';
   styleUrl: './blip-details.component.scss',
 })
 export class BlipDetailsComponent {
-  blip = input<Blip | null>(null);
+  blip = input.required<Blip>();
   closeDetails = output<void>();
 }

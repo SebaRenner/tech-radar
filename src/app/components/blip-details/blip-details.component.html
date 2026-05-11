@@ -1,10 +1,10 @@
-@if (blip(); as b) {
-  <div class="detail-card">
-    <div class="header">
-      <app-blip-chips [blip]="b" />
-      <button class="close" (click)="closeDetails.emit()">✕</button>
-    </div>
-    <p class="name">{{ b.name }}</p>
-    <p class="description">{{ b.description }}</p>
+@let b = blip();
+
+<div class="detail-card">
+  <div class="header">
+    <app-blip-chips [blip]="b" />
+    <button class="close" (click)="closeDetails.emit()">✕</button>
   </div>
-}
+  <p class="name">{{ b.name }}</p>
+  <p class="description">{{ b.description }}</p>
+</div>

@@ -291,7 +291,7 @@ export const blips: Blip[] = [
     },
     {
         name: "Entity Framework Core",
-        description: "Microsoft's official ORM for .NET, enabling database access through strongly typed C# models with support for migrations, LINQ queries, and deep integration with ASP.NET Core and Azure SQL.",
+        description: "Microsoft's official ORM for .NET, enabling database access through strongly typed C# models with support for migrations, LINQ queries, and deep integration with ASP.NET Core.",
         ring: Ring.Adopt,
         quadrant: Quadrant.LanguagesAndFrameworks
     },
@@ -312,5 +312,17 @@ export const blips: Blip[] = [
         description: "A lightweight .NET library for managing and executing SQL migration scripts, providing explicit, version-controlled schema changes as a transparent alternative to convention-based ORM migrations.",
         ring: Ring.Assess,
         quadrant: Quadrant.Tools
+    },
+    {
+        name: "Azure Data Factory",
+        description: "A cloud-based ETL and data integration service for orchestrating and automating data movement and transformation pipelines.",
+        ring: Ring.Caution,
+        quadrant: Quadrant.Platforms
+    },
+    {
+        name: "Microsoft Entra ID",
+        description: "Microsoft's cloud identity platform, used here specifically from a developer perspective — covering App Registrations, OAuth2/OIDC auth flows, scopes, and service principal configuration for securing applications and API access.",
+        ring: Ring.Trial,
+        quadrant: Quadrant.Platforms
     },
 ];

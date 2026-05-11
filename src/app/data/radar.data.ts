@@ -289,4 +289,28 @@ export const blips: Blip[] = [
         ring: Ring.Trial,
         quadrant: Quadrant.Techniques
     },
+    {
+        name: "Entity Framework Core",
+        description: "Microsoft's official ORM for .NET, enabling database access through strongly typed C# models with support for migrations, LINQ queries, and deep integration with ASP.NET Core and Azure SQL.",
+        ring: Ring.Adopt,
+        quadrant: Quadrant.LanguagesAndFrameworks
+    },
+    {
+        name: "Dapper",
+        description: "A lightweight .NET micro-ORM that extends IDbConnection with convenient query mapping, offering fine-grained SQL control and high performance for scenarios where EF Core's abstraction is too heavy.",
+        ring: Ring.Assess,
+        quadrant: Quadrant.LanguagesAndFrameworks
+    },
+    {
+        name: "Visual Studio",
+        description: "Microsoft's full-featured IDE for .NET and C# development, offering advanced debugging, profiling, and designer tooling that complements VS Code for heavier backend and enterprise workloads.",
+        ring: Ring.Adopt,
+        quadrant: Quadrant.Tools
+    },
+    {
+        name: "DbUp",
+        description: "A lightweight .NET library for managing and executing SQL migration scripts, providing explicit, version-controlled schema changes as a transparent alternative to convention-based ORM migrations.",
+        ring: Ring.Assess,
+        quadrant: Quadrant.Tools
+    },
 ];

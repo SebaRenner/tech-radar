@@ -1,4 +1,4 @@
-import { Component, input } from '@angular/core';
+import { Component, input, output } from '@angular/core';
 import { Blip } from '../../models/radar.models';
 import { BlipChipsComponent } from '../blip-chips/blip-chips.component';
 
@@ -10,4 +10,5 @@ import { BlipChipsComponent } from '../blip-chips/blip-chips.component';
 })
 export class BlipDetailsComponent {
   blip = input<Blip | null>(null);
+  closeDetails = output<void>();
 }

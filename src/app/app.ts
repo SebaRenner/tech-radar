@@ -17,7 +17,10 @@ export class App {
   selectedBlip = signal<Blip | null>(null);
 
   onBlipSelected(blip: Blip) {
-    console.log('Selected blip:', blip);
     this.selectedBlip.set(blip);
+  }
+
+  onCloseDetails() {
+    this.selectedBlip.set(null);
   }
 }

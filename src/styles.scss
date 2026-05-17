@@ -4,3 +4,9 @@ body {
   margin: 0;
   font-family: var(--font-sans, sans-serif);
 }
+
+@mixin desktop {
+  @media (min-width: 640px) {
+    @content;
+  }
+}

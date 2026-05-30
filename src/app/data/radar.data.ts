@@ -325,4 +325,10 @@ export const blips: Blip[] = [
         ring: Ring.Trial,
         quadrant: Quadrant.Platforms
     },
+    {
+        name: "NgRx",
+        description: "A reactive state management library for Angular applications based on the Redux pattern, using actions, reducers, selectors, and effects to manage complex application state in a predictable, testable way.",
+        ring: Ring.Trial,
+        quadrant: Quadrant.LanguagesAndFrameworks
+    },
 ];

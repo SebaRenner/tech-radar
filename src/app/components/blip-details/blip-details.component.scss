@@ -1,9 +1,22 @@
+@use '../../../styles' as *;
+
 :host {
   position: absolute;
   top: 10rem;
   right: 2.5rem;
   width: 350px;
   z-index: 100;
+
+  @include mobile {
+    position: fixed;
+    width: auto;
+    top: auto;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    animation: slide-up 250ms ease-out;
+  }
 }
 
 .detail-card {
@@ -12,6 +25,12 @@
   border-radius: 12px;
   padding: 1.25rem;
   box-shadow: 0 2px 12px rgba(0, 0, 0, 0.12);
+
+  @include mobile {
+    border-radius: 1rem 1rem 0 0;
+    padding-bottom: calc(1.25rem + env(safe-area-inset-bottom));
+    box-shadow: 0 -2px 12px rgba(0, 0, 0, 0.12);
+  }
 }
 
 .header {
@@ -32,6 +51,11 @@
   &:hover {
     color: #333;
   }
+
+  @include mobile {
+    min-width: 44px;
+    min-height: 44px;
+  }
 }
 
 .name {
@@ -45,4 +69,9 @@
   color: #666;
   line-height: 1.6;
   margin: 0;
+}
+
+@keyframes slide-up {
+  from { transform: translateY(100%); }
+  to   { transform: translateY(0); }
 }

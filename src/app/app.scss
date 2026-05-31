@@ -1,3 +1,5 @@
+@use '../styles' as *;
+
 .app-content {
   display: block;
   padding: 0px 20px 0px 20px;
@@ -17,5 +19,16 @@
     color: #999;
     font-weight: 400;
     letter-spacing: 0.03em;
+  }
+
+  .backdrop {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.4);
+    z-index: 99;
+
+    @include desktop {
+      display: none;
+    }
   }
 }

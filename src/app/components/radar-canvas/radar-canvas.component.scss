@@ -1,3 +1,5 @@
+@use '../../../styles' as *;
+
 .radar-svg {
   max-width: 900px;
   display: block;
@@ -23,6 +25,12 @@
   font-size: 12px;
   font-weight: 500;
   fill: white;
+}
+
+.tooltip {
+  @include mobile {
+    display: none;
+  }
 }
 
 .tooltip-label {

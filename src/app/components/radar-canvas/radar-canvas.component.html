@@ -77,7 +77,8 @@
 
   <!-- tooltip -->
   @if (hoveredBlip) {
-    <g [attr.transform]="'translate(' + blipPosition(hoveredBlip).x + ',' + (blipPosition(hoveredBlip).y - 30) + ')'">
+    <g class="tooltip"
+     [attr.transform]="'translate(' + blipPosition(hoveredBlip).x + ',' + (blipPosition(hoveredBlip).y - 30) + ')'">
       <rect
         [attr.x]="-tooltipWidth(hoveredBlip) / 2"
         y="-16"

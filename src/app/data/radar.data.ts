@@ -331,4 +331,10 @@ export const blips: Blip[] = [
         ring: Ring.Trial,
         quadrant: Quadrant.LanguagesAndFrameworks
     },
+    {
+        name: "SemVer",
+        description: "A versioning convention that encodes breaking changes, new features, and patches into a structured MAJOR.MINOR.PATCH scheme, enabling predictable dependency management and clear communication of change impact across teams and consumers.",
+        ring: Ring.Trial,
+        quadrant: Quadrant.Techniques
+    },
 ];

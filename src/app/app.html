@@ -1,9 +1,9 @@
 <div class="app-content">
     <div class="title-area">
         <h1>My Tech Radar</h1>
-        <span class="version-stamp">May 2026</span>
+        <span class="version-stamp">June 2026</span>
     </div>
-    <p>Over the years I've worked with a lot of different technologies. This radar is my way of mapping that out — where I feel at home, where I'm still finding my footing, and what I'd reach for again. It's about my personal experience, not a verdict on any tool or language.</p>
+    <p>Over the past years I've worked on a lot of projects. From simple Proof-of-Concepts to distributed enterprise cloud solutions. Each adding some new technologies to my toolkit. This radar is my way of mapping that out. An overview of what technologies I've been working with, which ones I've adopted, and those I'd rather avoid if given the chance. It's about my personal experience, not a verdict on any tool or language.</p>
     <app-radar-canvas [blips]="blips" (blipSelected)="onBlipSelected($event)" />
     @if (selectedBlip(); as blip) {
         <div class="backdrop" (click)="onCloseDetails()"></div>

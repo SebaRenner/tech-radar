@@ -1,6 +1,7 @@
 # Tech Radar
+A visualization of technologies I used in past projects and to what degree I've adopted them.
 
-
+[![Tech Radar](.images/tech-radar.png)](https://sebarenner.github.io/tech-radar/)
 
 ## Reading the Radar
 Like the original [Tech Radar from Thoughtworks](https://www.thoughtworks.com/radar) the radar is divided into four quadrants and four rings. Although the labels are the same I define the meaning of the rings slightly different from the original:

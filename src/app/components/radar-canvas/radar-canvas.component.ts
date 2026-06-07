@@ -2,9 +2,9 @@ import { Component, input, OnInit, output } from '@angular/core';
 import { Blip } from '../../models/radar.models';
 
 interface BandLayout {
-  count: number;
-  size: number;
+  bandSize: number;
   blipCounts: number[];
+  assignments: { bandIndex: number; positionInBand: number }[];
 }
 
 @Component({
@@ -120,21 +120,21 @@ export class RadarCanvasComponent implements OnInit {
     };
   }
 
-  private assignBlipsToBands(
-    blips: Blip[],
-    bounds: { inner: number; outer: number }
-  ): BandLayout {
+  private assignBlipsToBands(blips: Blip[], bounds: { inner: number; outer: number }): BandLayout {
     const availableWidth = bounds.outer - bounds.inner;
-    const count = Math.max(1, Math.floor(availableWidth / this.BLIP_DIAMETER));
-    const size = availableWidth / count;
+    const bandCount = Math.max(1, Math.floor(availableWidth / this.BLIP_DIAMETER));
+    const bandSize = availableWidth / bandCount;
 
-    const blipCounts = new Array(count).fill(0);
-    blips.forEach((_, i) => {
-      const bandIndex = (count - 1) - (i % count); // outermost first
-      blipCounts[bandIndex]++;
-      });
+    const assignments = blips.map((_, i) => ({
+      bandIndex: (bandCount - 1) - (i % bandCount),
+      positionInBand: Math.floor(i / bandCount),
+    }));
 
-    return { count, size, blipCounts };
+    const blipCounts = Array.from({ length: bandCount }, (_, b) =>
+      assignments.filter(a => a.bandIndex === b).length
+    );
+
+    return { bandSize, blipCounts, assignments };
   }
 
   private computeArcSpreadDeg(blipCount: number, radius: number): number {
@@ -159,28 +159,16 @@ export class RadarCanvasComponent implements OnInit {
     return angleDeg * (Math.PI / 180);
   }
 
-  private resolveBlipPositions(
-    blips: Blip[],
-    bands: BandLayout,
-    bounds: { inner: number; outer: number },
-    quadrant: number,
-  ): void {
+  private resolveBlipPositions(blips: Blip[], bands: BandLayout, bounds: { inner: number; outer: number }, quadrant: number): void {
     const quadrantStartAngle = this.QUADRANT_START_ANGLES[quadrant];
 
     blips.forEach((blip, i) => {
-      const bandIndex = (bands.count - 1) - (i % bands.count);
-      const positionInBand = Math.floor(i / bands.count);
-
-      const radius = bounds.inner + (bandIndex + 0.5) * bands.size;
+      const { bandIndex, positionInBand } = bands.assignments[i];
+      const radius = bounds.inner + (bandIndex + 0.5) * bands.bandSize;
       const arcSpreadDeg = this.computeArcSpreadDeg(bands.blipCounts[bandIndex], radius);
-      const angleRad = this.computeBlipAngleRad(
-        positionInBand,
-        bands.blipCounts[bandIndex],
-        arcSpreadDeg,
-        quadrantStartAngle,
-      );
+      const angleRad = this.computeBlipAngleRad(positionInBand, bands.blipCounts[bandIndex], arcSpreadDeg, quadrantStartAngle);
 
-        this.positionCache.set(blip.name, {
+      this.positionCache.set(blip.name, {
         x: this.cx + radius * Math.cos(angleRad),
         y: this.cy + radius * Math.sin(angleRad),
       });

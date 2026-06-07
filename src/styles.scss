@@ -1,5 +1,32 @@
 /* You can add global styles to this file, and also import other style files */
 
+:root {
+  /* Text */
+  --color-text-strong: #333;
+  --color-text-default: #444;
+  --color-text-muted: #666;
+  --color-text-subtle: #999;
+
+  /* Links */
+  --color-link: #0000ee;
+
+  /* Backgrounds */
+  --color-bg-card: #fff;
+  --color-bg-subtle: #f9f9f9;
+
+  /* Borders */
+  --color-border-subtle: #e0e0e0;
+
+  /* Font sizes */
+  --font-size-xs: 11px;
+  --font-size-sm: 0.75rem;
+  --font-size-body-sm: 0.85rem;
+  --font-size-secondary: 0.9rem;
+  --font-size-ring-name: 0.95rem;
+  --font-size-base: 1rem;
+  --font-size-lg: 1.2rem;
+}
+
 body {
   margin: 0;
   font-family: var(--font-sans, sans-serif);

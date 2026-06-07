@@ -114,7 +114,17 @@ export class RadarCanvasComponent implements OnInit {
         const band = (numBands - 1) - (i % numBands);
         const indexInBand = Math.floor(i / numBands);
         const r = safeInner + (band + 0.5) * bandSize;
-        const angleDeg = startAngle + 15 + (indexInBand + 0.5) * (60 / bandCounts[band]);
+
+        const minAngularGap = (blipDiameter + 4) / r * (180 / Math.PI);
+        const maxAngularGap = (blipDiameter * 2.2) / r * (180 / Math.PI);
+
+        const minSpread = bandCounts[band] * minAngularGap;
+        const maxSpread = bandCounts[band] * maxAngularGap;
+
+        const spread = Math.min(80, Math.max(minSpread, Math.min(maxSpread, 60)));
+        const arcStart = startAngle + (90 - spread) / 2;
+
+        const angleDeg = arcStart + (indexInBand + 0.5) * (spread / bandCounts[band]);
         const angleRad = (angleDeg * Math.PI) / 180;
 
         this.positionCache.set(blip.name, {

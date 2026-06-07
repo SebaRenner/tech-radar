@@ -23,7 +23,7 @@ export const blips: Blip[] = [
         name: "Terraform",
         description: "Infrastructure as Code tool for provisioning and managing cloud resources declaratively.",
         ring: Ring.Trial,
-        quadrant: Quadrant.Platforms
+        quadrant: Quadrant.Tools
     },
     {
         name: "Git",
@@ -106,7 +106,7 @@ export const blips: Blip[] = [
     {
         name: "Hexagonal Architecture",
         description: "An architectural style that isolates core business logic from external systems via ports and adapters, improving testability and long-term maintainability.",
-        ring: Ring.Trial,
+        ring: Ring.Assess,
         quadrant: Quadrant.Techniques
     },
     {
@@ -124,12 +124,6 @@ export const blips: Blip[] = [
     {
         name: "Event Sourcing",
         description: "A persistence pattern where state changes are stored as an immutable sequence of events, enabling full audit trails, temporal queries, and event replay.",
-        ring: Ring.Trial,
-        quadrant: Quadrant.Techniques
-    },
-    {
-        name: "Projections / Read-optimized Models",
-        description: "The practice of deriving purpose-built read models from an event stream or write model, optimizing query performance without compromising the integrity of the write side.",
         ring: Ring.Trial,
         quadrant: Quadrant.Techniques
     },
@@ -337,4 +331,76 @@ export const blips: Blip[] = [
         ring: Ring.Trial,
         quadrant: Quadrant.Techniques
     },
+    {
+        name: "Progressive Delivery",
+        description: "The practice of releasing software incrementally and safely to reduce deployment risk. Covers Feature Flags, Canary Deployments, Blue/Green Deployments, and Zero-Downtime Deployments.",
+        ring: Ring.Adopt,
+        quadrant: Quadrant.Techniques
+    },
+    {
+        name: "Architecture Decision Records",
+        description: "A lightweight documentation practice for capturing significant architectural decisions, their context, and consequences — creating a historical log that helps teams understand why a system is shaped the way it is.",
+        ring: Ring.Trial,
+        quadrant: Quadrant.Techniques
+    },
+    {
+        name: "xUnit",
+        description: "A modern, extensible unit testing framework for .NET, offering a clean test lifecycle, parallel test execution, and strong integration with the broader .NET testing ecosystem.",
+        ring: Ring.Adopt,
+        quadrant: Quadrant.LanguagesAndFrameworks
+    },
+    {
+        name: "Kreya",
+        description: "A modern API client with first-class gRPC support alongside REST and other protocols, offering a clean UI, environment management, and project-based organisation as a compelling alternative to Postman for gRPC-heavy workflows.",
+        ring: Ring.Assess,
+        quadrant: Quadrant.Tools
+    },
+    {
+        name: "HTTP Client Files",
+        description: "Plain-text .http files for defining and executing API requests directly within the IDE, keeping API calls version-controlled alongside the codebase and eliminating the need for external tooling.",
+        ring: Ring.Assess,
+        quadrant: Quadrant.Tools
+    },
+    {
+        name: "Backend for Frontend",
+        description: "An architectural pattern where a dedicated backend service is created per client, tailoring API shape and data aggregation to the specific needs of that frontend rather than exposing a general-purpose API.",
+        ring: Ring.Adopt,
+        quadrant: Quadrant.Techniques
+    },
+    {
+        name: "API Gateway",
+        description: "An infrastructure pattern providing a single entry point for client traffic, handling cross-cutting concerns such as authentication, rate limiting, routing, and SSL termination.",
+        ring: Ring.Trial,
+        quadrant: Quadrant.Techniques
+    },
+    {
+        name: "arc42",
+        description: "A pragmatic, lightweight template for documenting software and system architecture, structuring documentation around 12 sections covering context, building blocks, runtime behaviour, and architectural decisions.",
+        ring: Ring.Assess,
+        quadrant: Quadrant.Techniques
+    },
+    {
+        name: "Threat Modelling",
+        description: "A structured security practice for identifying, analysing, and mitigating potential threats early in the design phase.",
+        ring: Ring.Assess,
+        quadrant: Quadrant.Techniques
+    },
+    {
+        name: "Anti-Corruption Layer",
+        description: "A structural pattern that isolates a bounded context from external systems or legacy models by introducing a translation layer, preventing foreign concepts and data shapes from leaking into the core domain.",
+        ring: Ring.Trial,
+        quadrant: Quadrant.Techniques
+    },
+    {
+        name: "Draw.io",
+        description: "A free, widely adopted diagramming tool for creating architecture diagrams, flowcharts, and system maps.",
+        ring: Ring.Adopt,
+        quadrant: Quadrant.Tools
+    },
+    {
+        name: "Excalidraw",
+        description: "A lightweight, open-source whiteboard tool for creating informal hand-drawn style diagrams, well suited for quick architectural sketches, whiteboarding sessions, and collaborative ideation.",
+        ring: Ring.Trial,
+        quadrant: Quadrant.Tools
+    }
 ];

@@ -16,7 +16,7 @@
         [attr.cy]="cy"
         [attr.r]="r"
         [attr.fill]="color"
-        [attr.fill-opacity]="ringOpacity(r)"
+        [attr.fill-opacity]="ringOpacities[$index]"
         [attr.clip-path]="'url(#quadrant-' + qi + ')'"
       />
     }

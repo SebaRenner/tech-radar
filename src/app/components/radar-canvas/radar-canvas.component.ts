@@ -62,7 +62,7 @@ export class RadarCanvasComponent implements OnInit {
   private readonly ARC_SPREAD_MIN_DEG = 30;
   private readonly ARC_SPREAD_MAX_DEG = 80;
 
-  private readonly ANGULAR_SPACING_FACTOR = 2.2;
+  private readonly ANGULAR_SPACING_FACTOR = 5;
   private readonly QUADRANT_START_ANGLES = [180, 270, 0, 90];
 
   ngOnInit(): void {

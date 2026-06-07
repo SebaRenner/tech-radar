@@ -80,7 +80,10 @@ export class RadarCanvasComponent implements OnInit {
   }
 
   private initBlipPositions(): void {
-    const blipDiameter = 32;
+    const blipRadius = 14;
+    const blipDiameter = blipRadius * 2;
+    const minGap = blipRadius + 4;
+
     const groups = new Map<string, Blip[]>();
 
     this.blips().forEach(blip => {
@@ -93,22 +96,20 @@ export class RadarCanvasComponent implements OnInit {
       const [quadrant, ring] = key.split('-').map(Number);
       const outerR = this.rings[ring];
       const innerR = ring > 0 ? this.rings[ring - 1] : 0;
-      const padding = (outerR - innerR) * 0.15;
-      const safeInner = Math.max(innerR + padding, 35);
-      const safeOuter = outerR - padding;
+
+      const safeInner = innerR + minGap;
+      const safeOuter = outerR - minGap;
+
       const startAngle = [180, 270, 0, 90][quadrant];
 
-      // how many radial bands fit in the safe zone
       const numBands = Math.max(1, Math.floor((safeOuter - safeInner) / blipDiameter));
       const bandSize = (safeOuter - safeInner) / numBands;
 
-      // count blips per band (outer bands fill first)
       const bandCounts = new Array(numBands).fill(0);
       groupBlips.forEach((_, i) => {
         bandCounts[(numBands - 1) - (i % numBands)]++;
       });
 
-      // place each blip at its band radius and evenly spread angle
       groupBlips.forEach((blip, i) => {
         const band = (numBands - 1) - (i % numBands);
         const indexInBand = Math.floor(i / numBands);

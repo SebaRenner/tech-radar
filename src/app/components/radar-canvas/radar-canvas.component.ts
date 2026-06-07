@@ -1,6 +1,12 @@
 import { Component, input, OnInit, output } from '@angular/core';
 import { Blip } from '../../models/radar.models';
 
+interface BandLayout {
+  count: number;
+  size: number;
+  blipCounts: number[];
+}
+
 @Component({
   selector: 'app-radar-canvas',
   templateUrl: './radar-canvas.component.html',
@@ -25,7 +31,7 @@ export class RadarCanvasComponent implements OnInit {
   readonly tooltipCharWidth = 5.1;
 
   readonly quadrantColors = ['#378ADD', '#1D9E75', '#EF9F27', '#E05C5C'];
-  readonly quadrantTextColors = ['#185FA5', '#0F6E56', '#854F0B','#7B1F1F'];
+  readonly quadrantTextColors = ['#185FA5', '#0F6E56', '#854F0B', '#7B1F1F'];
   readonly quadrantLabels = [
     ['Techniques'],
     ['Tools'],
@@ -46,6 +52,17 @@ export class RadarCanvasComponent implements OnInit {
     { x: 700, y: 726 }, // Languages & Frameworks
     { x: 90, y: 726 },  // Platforms
   ];
+
+  private readonly BLIP_RADIUS = 14;
+  private readonly BLIP_DIAMETER = this.BLIP_RADIUS * 2;
+  private readonly BLIP_SAFE_MARGIN = this.BLIP_RADIUS + 4;
+
+  private readonly ARC_SPREAD_TARGET_DEG = 60;
+  private readonly ARC_SPREAD_MIN_DEG = 30;
+  private readonly ARC_SPREAD_MAX_DEG = 80;
+
+  private readonly ANGULAR_SPACING_FACTOR = 2.2;
+  private readonly QUADRANT_START_ANGLES = [180, 270, 0, 90];
 
   ngOnInit(): void {
     this.initBlipPositions();
@@ -80,57 +97,109 @@ export class RadarCanvasComponent implements OnInit {
   }
 
   private initBlipPositions(): void {
-    const blipRadius = 14;
-    const blipDiameter = blipRadius * 2;
-    const minGap = blipRadius + 4;
+    this.groupBlipsByQuadrantAndRing().forEach((blips, key) => {
+      const { quadrant, ring } = this.parseGroupKey(key);
+      const bounds = this.getRingSafeBounds(ring);
+      const bands = this.assignBlipsToBands(blips, bounds);
+      this.resolveBlipPositions(blips, bands, bounds, quadrant);
+    });
+  }
 
+  private groupBlipsByQuadrantAndRing(): Map<string, Blip[]> {
     const groups = new Map<string, Blip[]>();
-
     this.blips().forEach(blip => {
       const key = `${blip.quadrant}-${blip.ring}`;
       if (!groups.has(key)) groups.set(key, []);
       groups.get(key)!.push(blip);
     });
+    return groups;
+  }
 
-    groups.forEach((groupBlips, key) => {
-      const [quadrant, ring] = key.split('-').map(Number);
+  private parseGroupKey(key: string): { quadrant: number; ring: number } {
+    const [quadrant, ring] = key.split('-').map(Number);
+    return { quadrant, ring };
+  }
+
+  private getRingSafeBounds(ring: number): { inner: number; outer: number } {
       const outerR = this.rings[ring];
       const innerR = ring > 0 ? this.rings[ring - 1] : 0;
+    return {
+      inner: innerR + this.BLIP_SAFE_MARGIN,
+      outer: outerR - this.BLIP_SAFE_MARGIN,
+    };
+  }
 
-      const safeInner = innerR + minGap;
-      const safeOuter = outerR - minGap;
+  private assignBlipsToBands(
+    blips: Blip[],
+    bounds: { inner: number; outer: number }
+  ): BandLayout {
+    const availableWidth = bounds.outer - bounds.inner;
+    const count = Math.max(1, Math.floor(availableWidth / this.BLIP_DIAMETER));
+    const size = availableWidth / count;
 
-      const startAngle = [180, 270, 0, 90][quadrant];
-
-      const numBands = Math.max(1, Math.floor((safeOuter - safeInner) / blipDiameter));
-      const bandSize = (safeOuter - safeInner) / numBands;
-
-      const bandCounts = new Array(numBands).fill(0);
-      groupBlips.forEach((_, i) => {
-        bandCounts[(numBands - 1) - (i % numBands)]++;
+    const blipCounts = new Array(count).fill(0);
+    blips.forEach((_, i) => {
+      const bandIndex = (count - 1) - (i % count); // outermost first
+      blipCounts[bandIndex]++;
       });
 
-      groupBlips.forEach((blip, i) => {
-        const band = (numBands - 1) - (i % numBands);
-        const indexInBand = Math.floor(i / numBands);
-        const r = safeInner + (band + 0.5) * bandSize;
+    return { count, size, blipCounts };
+  }
 
-        const minAngularGap = (blipDiameter + 4) / r * (180 / Math.PI);
-        const maxAngularGap = (blipDiameter * 2.2) / r * (180 / Math.PI);
+  private getBandIndex(blipIndex: number, bandCount: number): number {
+    return (bandCount - 1) - (blipIndex % bandCount);
+  }
 
-        const minSpread = bandCounts[band] * minAngularGap;
-        const maxSpread = bandCounts[band] * maxAngularGap;
+  private getPositionWithinBand(blipIndex: number, bandCount: number): number {
+    return Math.floor(blipIndex / bandCount);
+  }
 
-        const spread = Math.min(80, Math.max(minSpread, Math.min(maxSpread, 60)));
-        const arcStart = startAngle + (90 - spread) / 2;
+  private computeArcSpreadDeg(blipCount: number, radius: number): number {
+    const minAngularGap = (this.BLIP_DIAMETER + 4) / radius * (180 / Math.PI);
+    const maxAngularGap = (this.BLIP_DIAMETER * this.ANGULAR_SPACING_FACTOR) / radius * (180 / Math.PI);
 
-        const angleDeg = arcStart + (indexInBand + 0.5) * (spread / bandCounts[band]);
-        const angleRad = (angleDeg * Math.PI) / 180;
+    const minSpread = blipCount * minAngularGap;
+    const maxSpread = blipCount * maxAngularGap;
+
+    const naturalSpread = Math.max(minSpread, Math.min(maxSpread, this.ARC_SPREAD_TARGET_DEG));
+    return Math.min(this.ARC_SPREAD_MAX_DEG, Math.max(this.ARC_SPREAD_MIN_DEG, naturalSpread));
+  }
+
+  private computeBlipAngleRad(
+    positionInBand: number,
+    blipCount: number,
+    arcSpreadDeg: number,
+    quadrantStartAngleDeg: number,
+  ): number {
+    const arcStartAngleDeg = quadrantStartAngleDeg + (90 - arcSpreadDeg) / 2;
+    const angleDeg = arcStartAngleDeg + (positionInBand + 0.5) * (arcSpreadDeg / blipCount);
+    return angleDeg * (Math.PI / 180);
+  }
+
+  private resolveBlipPositions(
+    blips: Blip[],
+    bands: BandLayout,
+    bounds: { inner: number; outer: number },
+    quadrant: number,
+  ): void {
+    const quadrantStartAngle = this.QUADRANT_START_ANGLES[quadrant];
+
+    blips.forEach((blip, i) => {
+      const bandIndex = this.getBandIndex(i, bands.count);
+      const positionInBand = this.getPositionWithinBand(i, bands.count);
+
+      const radius = bounds.inner + (bandIndex + 0.5) * bands.size;
+      const arcSpreadDeg = this.computeArcSpreadDeg(bands.blipCounts[bandIndex], radius);
+      const angleRad = this.computeBlipAngleRad(
+        positionInBand,
+        bands.blipCounts[bandIndex],
+        arcSpreadDeg,
+        quadrantStartAngle,
+      );
 
         this.positionCache.set(blip.name, {
-          x: this.cx + r * Math.cos(angleRad),
-          y: this.cy + r * Math.sin(angleRad),
-        });
+        x: this.cx + radius * Math.cos(angleRad),
+        y: this.cy + radius * Math.sin(angleRad),
       });
     });
   }

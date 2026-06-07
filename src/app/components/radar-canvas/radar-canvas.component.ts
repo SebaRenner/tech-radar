@@ -58,6 +58,8 @@ export class RadarCanvasComponent implements OnInit {
   private readonly BLIP_DIAMETER = this.BLIP_RADIUS * 2;
   private readonly BLIP_SAFE_MARGIN = this.BLIP_RADIUS + 4;
 
+  private readonly ADOPT_RING_INNER_RADIUS = 70;
+
   private readonly ARC_SPREAD_TARGET_DEG = 60;
   private readonly ARC_SPREAD_MIN_DEG = 30;
   private readonly ARC_SPREAD_MAX_DEG = 80;
@@ -112,11 +114,11 @@ export class RadarCanvasComponent implements OnInit {
   }
 
   private getRingSafeBounds(ring: number): { inner: number; outer: number } {
-      const outerR = this.rings[ring];
-      const innerR = ring > 0 ? this.rings[ring - 1] : 0;
+    const outerR = this.rings[ring] - this.BLIP_SAFE_MARGIN;
+    const innerR = ring > 0 ? this.rings[ring - 1] + this.BLIP_SAFE_MARGIN : this.ADOPT_RING_INNER_RADIUS;
     return {
-      inner: innerR + this.BLIP_SAFE_MARGIN,
-      outer: outerR - this.BLIP_SAFE_MARGIN,
+      inner: innerR,
+      outer: outerR,
     };
   }
 

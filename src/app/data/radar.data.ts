@@ -90,7 +90,8 @@ export const blips: Blip[] = [
         name: "VS Code",
         description: "A lightweight but powerful open-source code editor by Microsoft, with a rich extension ecosystem covering debugging, linting, version control, and language support.",
         ring: Ring.Adopt,
-        quadrant: Quadrant.Tools
+        quadrant: Quadrant.Tools,
+        comment: "I used to use WebStorm or other JetBrains IDEs, but basically consolidated all my development work into VS Code (aside from .NET)"
     },
     {
         name: "Oxlint",
@@ -114,7 +115,8 @@ export const blips: Blip[] = [
         name: "Docker",
         description: "A containerization platform that packages applications and their dependencies into portable, reproducible containers for consistent deployment across environments.",
         ring: Ring.Trial,
-        quadrant: Quadrant.Platforms
+        quadrant: Quadrant.Platforms,
+        comment: "Although Docker is clearly the adopted standard for containerization, I just have some basic knowledge gaps that I never had the time to fill. Thus, Trial for me."
     },
     {
         name: "ETL Pipelines",
@@ -144,13 +146,15 @@ export const blips: Blip[] = [
         name: "Supabase",
         description: "An open-source Backend-as-a-Service platform built on PostgreSQL, providing authentication, real-time subscriptions, storage, and auto-generated APIs.",
         ring: Ring.Assess,
-        quadrant: Quadrant.Platforms
+        quadrant: Quadrant.Platforms, 
+        comment: "I switched to Supabase from Firebase for private projects. So far it got the job done."
     },
     {
         name: "KurrentDB",
         description: "A purpose-built event store database (formerly EventStoreDB) optimised for event sourcing workloads, offering persistent subscriptions and stream-based storage.",
         ring: Ring.Caution,
-        quadrant: Quadrant.Platforms
+        quadrant: Quadrant.Platforms,
+        comment: "A database built for event sourcing. Simple enough to use, but just terrible in production. Maybe if they improve the Ops tooling I'll revisite it.."
     },
     {
         name: "Azure Service Bus",
@@ -160,7 +164,7 @@ export const blips: Blip[] = [
     },
     {
         name: "Azure OpenAI",
-        description: "Microsoft's managed Azure service providing access to OpenAI models including GPT-4, with enterprise-grade security, compliance, and regional data residency.",
+        description: "Microsoft's managed Azure service providing access to OpenAI models, with enterprise-grade security, compliance, and regional data residency.",
         ring: Ring.Trial,
         quadrant: Quadrant.Platforms
     },
@@ -168,13 +172,15 @@ export const blips: Blip[] = [
         name: "Azure Logic Apps",
         description: "A low-code workflow automation platform for integrating Azure services and third-party systems, though with notable trade-offs in testability and maintainability.",
         ring: Ring.Caution,
-        quadrant: Quadrant.Platforms
+        quadrant: Quadrant.Platforms,
+        comment: "Regarding low-code engines one of the better ones, as it's actually version controlled and has decent monitoring and debugging capabilities, but still has the same flaws as every low-code engine."
     },
     {
         name: "Azure Web Apps",
         description: "A fully managed PaaS hosting platform for web applications and APIs, offering scaling, deployment slots, and deep integration with Azure DevOps pipelines.",
         ring: Ring.Adopt,
-        quadrant: Quadrant.Platforms
+        quadrant: Quadrant.Platforms,
+        comment: "Super easy to use and getting the job done. I just wish you could better understand what the underlying infrastructure is doing from time to time."
     },
     {
         name: "Azure Container Apps",
@@ -196,7 +202,7 @@ export const blips: Blip[] = [
     },
         {
         name: "CI/CD",
-        description: "The practice of automating build, test, and deployment pipelines to enable frequent, reliable software delivery with minimal manual intervention.",
+        description: "The practice of automating build, test, and deployment pipelines to enable frequent, reliable software delivery.",
         ring: Ring.Adopt,
         quadrant: Quadrant.Techniques
     },
@@ -204,7 +210,8 @@ export const blips: Blip[] = [
         name: "Renovate Bot",
         description: "An automated dependency update tool that raises pull requests for outdated packages, with highly configurable scheduling, grouping, and auto-merge rules.",
         ring: Ring.Assess,
-        quadrant: Quadrant.Tools
+        quadrant: Quadrant.Tools,
+        comment: "Hey maybe I've never seen it properly configured but I'm spending more time overlooking its doing than just doing minor updates every second sprint myself.."
     },
     {
         name: "AI Coding Assistant",
@@ -240,7 +247,8 @@ export const blips: Blip[] = [
         name: "Quantum Development Kit",
         description: "Microsoft's SDK for quantum computing, including the Q# language and Azure Quantum integration, currently limited to simulation and early experimentation for most real-world workloads.",
         ring: Ring.Caution,
-        quadrant: Quadrant.LanguagesAndFrameworks
+        quadrant: Quadrant.LanguagesAndFrameworks,
+        comment: "I haven't used it for 2 years now so maybe it changed but last time I used it, the developer experience was just really bad."
     },
     {
         name: "Medallion Architecture",
@@ -252,7 +260,8 @@ export const blips: Blip[] = [
         name: "Low-Code Engines",
         description: "Platforms that enable application development through visual configuration and minimal hand-written code, trading long-term flexibility and testability for short-term delivery speed.",
         ring: Ring.Caution,
-        quadrant: Quadrant.Platforms
+        quadrant: Quadrant.Platforms,
+        comment: "Every year there is a new one and they all have the same problem not matter how flexible the building blocks are. There comes the point, where you need more flexibility that the engine can't give you and you end up with messy hacky solution."
     },
     {
         name: "Azure Storage Account",
@@ -298,7 +307,7 @@ export const blips: Blip[] = [
     },
     {
         name: "Visual Studio",
-        description: "Microsoft's full-featured IDE for .NET and C# development, offering advanced debugging, profiling, and designer tooling that complements VS Code for heavier backend and enterprise workloads.",
+        description: "Microsoft's full-featured IDE supporting a wide range of languages and platforms including C#, C++, F#, and more, offering advanced debugging, profiling, and designer tooling that complements VS Code for heavier backend and enterprise workloads.",
         ring: Ring.Adopt,
         quadrant: Quadrant.Tools
     },
@@ -312,7 +321,8 @@ export const blips: Blip[] = [
         name: "Azure Data Factory",
         description: "A cloud-based ETL and data integration service for orchestrating and automating data movement and transformation pipelines.",
         ring: Ring.Caution,
-        quadrant: Quadrant.Platforms
+        quadrant: Quadrant.Platforms,
+        comment: "It's a production ready service for ETL pipelines, it just got its quirks and overall the developer experience is not great. Also the debugging experience is just terrible."
     },
     {
         name: "Microsoft Entra ID",
@@ -342,7 +352,8 @@ export const blips: Blip[] = [
         name: "Architecture Decision Records",
         description: "A lightweight documentation practice for capturing significant architectural decisions, their context, and consequences — creating a historical log that helps teams understand why a system is shaped the way it is.",
         ring: Ring.Trial,
-        quadrant: Quadrant.Techniques
+        quadrant: Quadrant.Techniques,
+        comment: "ADRs are a nice way to document why a team made a decision at a certain point in time. However, I experienced that  the discoverability of information is just not great if a system is documented over tens or hundreds of ADRs. Asking your AI Assistant might help, but it is still not ideal."
     },
     {
         name: "xUnit",
@@ -360,7 +371,8 @@ export const blips: Blip[] = [
         name: "HTTP Client Files",
         description: "Plain-text .http files for defining and executing API requests directly within the IDE, keeping API calls version-controlled alongside the codebase and eliminating the need for external tooling.",
         ring: Ring.Assess,
-        quadrant: Quadrant.Tools
+        quadrant: Quadrant.Tools,
+        comment: "I really started to like this approach. I hope more IDEs pick it up."
     },
     {
         name: "Backend for Frontend",
@@ -414,7 +426,8 @@ export const blips: Blip[] = [
         name: "Team Topologies",
         description: "A model for designing team structures and interactions around four fundamental team types — stream-aligned, platform, enabling, and complicated subsystem — to reduce cognitive load and optimise the flow of change through an organisation.",
         ring: Ring.Assess,
-        quadrant: Quadrant.Techniques
+        quadrant: Quadrant.Techniques,
+        comment: ""
     },
     {
         name: "GraphQL Federation",
@@ -426,12 +439,21 @@ export const blips: Blip[] = [
         name: "Shift-Left Security",
         description: "The practice of integrating security activities earlier in the development lifecycle — including threat modelling, static analysis, and dependency scanning in CI — rather than treating security as a gate at release time.",
         ring: Ring.Assess,
-        quadrant: Quadrant.Techniques
+        quadrant: Quadrant.Techniques,
+        comment: "It just makes everybodies life easier if you include security aspects from the beginning of the development process. If you include it from the beginning it will barely influence your team's velocity. On the other hand, if you plan it for the end of your project, it'll be a huge pain or will simply not be done at all."
     },
     {
         name: "Defense in Depth",
         description: "A security architecture principle of layering multiple independent controls across infrastructure, application, and data tiers, ensuring no single point of failure exposes the system.",
         ring: Ring.Adopt,
-        quadrant: Quadrant.Techniques
+        quadrant: Quadrant.Techniques,
+        comment: "This might sounds advanced but it's basically just following best practices. Setup your network zones and policies correctly, use dedicated service principals with only the required permissions, make use of built-in encryption-in-transit and encryption-at-rest mechanisms and you're good to go."
+    },
+    {
+        name: "Rust",
+        description: "A systems programming language focused on memory safety, performance, and concurrency without a garbage collector.",
+        ring: Ring.Assess,
+        quadrant: Quadrant.LanguagesAndFrameworks,
+        comment: "As someone who struggled with C++ in the past, I'm having an easier time with Rust. Noneheless, I've never done more than some tutorials from 'The Book'."
     },
 ];

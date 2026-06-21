@@ -380,12 +380,6 @@ export const blips: Blip[] = [
         quadrant: Quadrant.Techniques
     },
     {
-        name: "Threat Modelling",
-        description: "A structured security practice for identifying, analysing, and mitigating potential threats early in the design phase.",
-        ring: Ring.Assess,
-        quadrant: Quadrant.Techniques
-    },
-    {
         name: "Anti-Corruption Layer",
         description: "A structural pattern that isolates a bounded context from external systems or legacy models by introducing a translation layer, preventing foreign concepts and data shapes from leaking into the core domain.",
         ring: Ring.Trial,
@@ -402,5 +396,41 @@ export const blips: Blip[] = [
         description: "A lightweight, open-source whiteboard tool for creating informal hand-drawn style diagrams, well suited for quick architectural sketches, whiteboarding sessions, and collaborative ideation.",
         ring: Ring.Trial,
         quadrant: Quadrant.Tools
-    }
+    },
+    {
+        name: "Storybook",
+        description: "An open-source tool for building and documenting UI components in isolation, providing a sandboxed environment for visual development, interactive controls, and component testing independent of the main application.",
+        ring: Ring.Assess,
+        quadrant: Quadrant.Tools
+    },
+    {
+        name: "Structured Logging",
+        description: "The practice of emitting log entries as machine-readable, key-value data rather than plain text strings — enabling reliable querying, filtering, and alerting in log aggregation platforms.",
+        ring: Ring.Adopt,
+        quadrant: Quadrant.Techniques
+    },
+    {
+        name: "Team Topologies",
+        description: "A model for designing team structures and interactions around four fundamental team types — stream-aligned, platform, enabling, and complicated subsystem — to reduce cognitive load and optimise the flow of change through an organisation.",
+        ring: Ring.Assess,
+        quadrant: Quadrant.Techniques
+    },
+    {
+        name: "GraphQL Federation",
+        description: "An architectural approach for composing multiple independent GraphQL APIs into a single unified graph, enabling teams to own and evolve their schema slice autonomously without exposing that complexity to consumers.",
+        ring: Ring.Assess,
+        quadrant: Quadrant.LanguagesAndFrameworks
+    },
+    {
+        name: "Shift-Left Security",
+        description: "The practice of integrating security activities earlier in the development lifecycle — including threat modelling, static analysis, and dependency scanning in CI — rather than treating security as a gate at release time.",
+        ring: Ring.Assess,
+        quadrant: Quadrant.Techniques
+    },
+    {
+        name: "Defense in Depth",
+        description: "A security architecture principle of layering multiple independent controls across infrastructure, application, and data tiers, ensuring no single point of failure exposes the system.",
+        ring: Ring.Adopt,
+        quadrant: Quadrant.Techniques
+    },
 ];

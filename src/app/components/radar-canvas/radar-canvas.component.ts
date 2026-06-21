@@ -58,7 +58,7 @@ export class RadarCanvasComponent implements OnInit {
   private readonly BLIP_DIAMETER = this.BLIP_RADIUS * 2;
   private readonly BLIP_SAFE_MARGIN = this.BLIP_RADIUS + 4;
 
-  private readonly ADOPT_RING_INNER_RADIUS = 70;
+  private readonly ADOPT_RING_INNER_RADIUS = 45;
 
   private readonly ARC_SPREAD_TARGET_DEG = 60;
   private readonly ARC_SPREAD_MIN_DEG = 30;

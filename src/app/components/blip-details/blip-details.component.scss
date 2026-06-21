@@ -71,6 +71,29 @@
   margin: 0;
 }
 
+.comment {
+  border-radius: 8px;
+  background: var(--color-bg-comment);
+  padding: 1rem;
+  margin-top: 1rem;
+
+  &-label {
+    color: var(--color-text-comment);
+    font-size: var(--font-size-xs);
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    margin: 0 0 0.5rem;
+  }
+
+  &-text {
+    font-size: var(--font-size-body-sm);
+    color: var(--color-text-comment);
+    line-height: 1.6;
+    margin: 0;
+  }
+}
+
 @keyframes slide-up {
   from { transform: translateY(100%); }
   to   { transform: translateY(0); }

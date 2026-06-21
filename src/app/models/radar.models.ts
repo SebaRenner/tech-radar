@@ -17,4 +17,5 @@ export interface Blip {
     description: string;
     ring: Ring;
     quadrant: Quadrant;
+    comment?: string;
 }

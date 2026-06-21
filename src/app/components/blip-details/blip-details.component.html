@@ -7,4 +7,10 @@
   </div>
   <p class="name">{{ b.name }}</p>
   <p class="description">{{ b.description }}</p>
+  @if (b.comment) {
+    <div class="comment">
+      <p class="comment-label">Comment</p>
+      <p class="comment-text">{{ b.comment }}</p>
+    </div>
+  }
 </div>

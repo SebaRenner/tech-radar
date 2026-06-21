@@ -59,7 +59,8 @@ export const blips: Blip[] = [
         name: "yarn",
         description: "A JavaScript package manager focused on reliability, deterministic installs via lockfiles, and monorepo workspace support.",
         ring: Ring.Caution,
-        quadrant: Quadrant.Tools
+        quadrant: Quadrant.Tools,
+        comment: "There is nothing wrong with yarn, but it was just outclassed by pnpm."
     },
     {
         name: "Infrastructure-as-Code",

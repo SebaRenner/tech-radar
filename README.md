@@ -9,7 +9,7 @@ Like the original [Tech Radar from Thoughtworks](https://www.thoughtworks.com/ra
 ### Rings
 **Adopt:** My go-to stack when given the choice and reasonable to do so.
 
-**Trial:** Technologies that may be well established but I just haven't fully grasped yet.
+**Trial:** Technologies that may be well established but I just haven't fully adopted or comitted to yet.
 
 **Assess:** Technologies I recently started using in a personal or professional context.
 

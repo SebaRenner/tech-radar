@@ -154,7 +154,7 @@ export const blips: Blip[] = [
         description: "A purpose-built event store database (formerly EventStoreDB) optimised for event sourcing workloads, offering persistent subscriptions and stream-based storage.",
         ring: Ring.Caution,
         quadrant: Quadrant.Platforms,
-        comment: "A database built for event sourcing. Simple enough to use, but just terrible in production. Maybe if they improve the Ops tooling I'll revisite it.."
+        comment: "A database built for event sourcing. Simple enough to use, but just terrible in production. Maybe if they improve the Ops tooling I'll revisit it.."
     },
     {
         name: "Azure Service Bus",
@@ -261,7 +261,7 @@ export const blips: Blip[] = [
         description: "Platforms that enable application development through visual configuration and minimal hand-written code, trading long-term flexibility and testability for short-term delivery speed.",
         ring: Ring.Caution,
         quadrant: Quadrant.Platforms,
-        comment: "Every year there is a new one and they all have the same problem not matter how flexible the building blocks are. There comes the point, where you need more flexibility that the engine can't give you and you end up with messy hacky solution."
+        comment: "Every year there is a new one and they all have the same problem no matter how flexible the building blocks are. There comes the point, where you need more flexibility than the engine can provide and you end up with messy hacky solutions."
     },
     {
         name: "Azure Storage Account",
@@ -440,20 +440,20 @@ export const blips: Blip[] = [
         description: "The practice of integrating security activities earlier in the development lifecycle — including threat modelling, static analysis, and dependency scanning in CI — rather than treating security as a gate at release time.",
         ring: Ring.Assess,
         quadrant: Quadrant.Techniques,
-        comment: "It just makes everybodies life easier if you include security aspects from the beginning of the development process. If you include it from the beginning it will barely influence your team's velocity. On the other hand, if you plan it for the end of your project, it'll be a huge pain or will simply not be done at all."
+        comment: "It just makes everybody's life easier if you include security aspects from the beginning of the development process. If you include it from the beginning it will barely influence your team's velocity. On the other hand, if you plan it for the end of your project, it'll be a huge pain or will simply not be done at all."
     },
     {
         name: "Defense in Depth",
         description: "A security architecture principle of layering multiple independent controls across infrastructure, application, and data tiers, ensuring no single point of failure exposes the system.",
         ring: Ring.Adopt,
         quadrant: Quadrant.Techniques,
-        comment: "This might sounds advanced but it's basically just following best practices. Setup your network zones and policies correctly, use dedicated service principals with only the required permissions, make use of built-in encryption-in-transit and encryption-at-rest mechanisms and you're good to go."
+        comment: "This might sound advanced but it's basically just following best practices. Setup your network zones and policies correctly, use dedicated service principals with only the required permissions, make use of built-in encryption-in-transit and encryption-at-rest mechanisms and you're good to go."
     },
     {
         name: "Rust",
         description: "A systems programming language focused on memory safety, performance, and concurrency without a garbage collector.",
         ring: Ring.Assess,
         quadrant: Quadrant.LanguagesAndFrameworks,
-        comment: "As someone who struggled with C++ in the past, I'm having an easier time with Rust. Noneheless, I've never done more than some tutorials from 'The Book'."
+        comment: "As someone who struggled with C++ in the past, I'm having an easier time with Rust. Nonetheless, I've never done more than some tutorials from 'The Book'."
     },
 ];

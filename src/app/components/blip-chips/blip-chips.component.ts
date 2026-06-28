@@ -7,7 +7,7 @@ import { Blip, Ring } from '../../models/radar.models';
   styleUrl: './blip-chips.component.scss',
 })
 export class BlipChipsComponent {
-    blip = input.required<Blip>();
-    readonly Ring = Ring;
-    readonly quadrantLabels = ['Techniques', 'Tools', 'Languages & Frameworks', 'Platforms'];
+  blip = input.required<Blip>();
+  readonly Ring = Ring;
+  readonly quadrantLabels = ['Techniques', 'Tools', 'Languages & Frameworks', 'Platforms'];
 }

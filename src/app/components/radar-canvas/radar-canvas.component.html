@@ -1,5 +1,4 @@
 <svg viewBox="0 0 800 800" xmlns="http://www.w3.org/2000/svg" class="radar-svg">
-    
   <defs>
     @for (path of quadrantPaths; track $index) {
       <clipPath [id]="'quadrant-' + $index">
@@ -24,8 +23,14 @@
 
   <!-- white ring borders -->
   @for (r of rings; track $index) {
-    <circle [attr.cx]="cx" [attr.cy]="cy" [attr.r]="r"
-      fill="none" stroke="white" stroke-width="1.5" />
+    <circle
+      [attr.cx]="cx"
+      [attr.cy]="cy"
+      [attr.r]="r"
+      fill="none"
+      stroke="white"
+      stroke-width="1.5"
+    />
   }
 
   <!-- quadrant dividers -->
@@ -35,20 +40,19 @@
   <!-- quadrant labels -->
   @for (lines of quadrantLabels; track $index; let qi = $index) {
     <text
-        [attr.x]="quadrantLabelPos[qi].x"
-        [attr.y]="quadrantLabelPos[qi].y"
-        [attr.fill]="quadrantTextColors[qi]"
-        class="quadrant-label"
-        text-anchor="middle">
-        @for (line of lines; track $index; let li = $index) {
-        <tspan
-            [attr.x]="quadrantLabelPos[qi].x"
-            [attr.dy]="li === 0 ? 0 : 18">
-            {{ line }}
+      [attr.x]="quadrantLabelPos[qi].x"
+      [attr.y]="quadrantLabelPos[qi].y"
+      [attr.fill]="quadrantTextColors[qi]"
+      class="quadrant-label"
+      text-anchor="middle"
+    >
+      @for (line of lines; track $index; let li = $index) {
+        <tspan [attr.x]="quadrantLabelPos[qi].x" [attr.dy]="li === 0 ? 0 : 18">
+          {{ line }}
         </tspan>
-        }
+      }
     </text>
-}
+  }
 
   <!-- ring labels -->
   @for (label of ringLabels; track $index) {
@@ -56,16 +60,21 @@
       [attr.x]="ringLabelPos($index).x"
       [attr.y]="ringLabelPos($index).y"
       class="ring-label"
-      text-anchor="middle">
+      text-anchor="middle"
+    >
       {{ label }}
     </text>
   }
 
   <!-- blips -->
   @for (blip of blips(); track blip; let i = $index) {
-    <a [attr.aria-label]="blip.name" style="cursor: pointer" (click)="blipSelected.emit(blip)"
-        (mouseenter)="onBlipEnter(blip)"
-        (mouseleave)="onBlipLeave()">
+    <a
+      [attr.aria-label]="blip.name"
+      style="cursor: pointer"
+      (click)="blipSelected.emit(blip)"
+      (mouseenter)="onBlipEnter(blip)"
+      (mouseleave)="onBlipLeave()"
+    >
       <g [attr.transform]="'translate(' + blipPosition(blip).x + ',' + blipPosition(blip).y + ')'">
         <circle r="14" [attr.fill]="blipFill" />
         <text x="0" y="4" class="blip-label" text-anchor="middle">
@@ -77,8 +86,12 @@
 
   <!-- tooltip -->
   @if (hoveredBlip) {
-    <g class="tooltip"
-     [attr.transform]="'translate(' + blipPosition(hoveredBlip).x + ',' + (blipPosition(hoveredBlip).y - 30) + ')'">
+    <g
+      class="tooltip"
+      [attr.transform]="
+        'translate(' + blipPosition(hoveredBlip).x + ',' + (blipPosition(hoveredBlip).y - 30) + ')'
+      "
+    >
       <rect
         [attr.x]="-tooltipWidth(hoveredBlip) / 2"
         y="-16"
@@ -93,5 +106,4 @@
       </text>
     </g>
   }
-
 </svg>

@@ -10,7 +10,7 @@ interface BandLayout {
 @Component({
   selector: 'app-radar-canvas',
   templateUrl: './radar-canvas.component.html',
-  styleUrl: './radar-canvas.component.scss'
+  styleUrl: './radar-canvas.component.scss',
 })
 export class RadarCanvasComponent implements OnInit {
   blips = input.required<Blip[]>();
@@ -41,17 +41,17 @@ export class RadarCanvasComponent implements OnInit {
   ];
 
   readonly quadrantPaths = [
-    'M400,400 L0,400 A400,400 0 0,1 400,0 Z',     // [0] top-left     → Techniques
-    'M400,400 L400,0 A400,400 0 0,1 800,400 Z',   // [1] top-right    → Tools
+    'M400,400 L0,400 A400,400 0 0,1 400,0 Z', // [0] top-left     → Techniques
+    'M400,400 L400,0 A400,400 0 0,1 800,400 Z', // [1] top-right    → Tools
     'M400,400 L800,400 A400,400 0 0,1 400,800 Z', // [2] bottom-right → Languages & Frameworks
-    'M400,400 L400,800 A400,400 0 0,1 0,400 Z',   // [3] bottom-left  → Platforms
+    'M400,400 L400,800 A400,400 0 0,1 0,400 Z', // [3] bottom-left  → Platforms
   ];
 
   readonly quadrantLabelPos = [
-    { x: 95, y: 68 },   // Techniques
-    { x: 730, y: 68 },  // Tools
+    { x: 95, y: 68 }, // Techniques
+    { x: 730, y: 68 }, // Tools
     { x: 700, y: 726 }, // Languages & Frameworks
-    { x: 90, y: 726 },  // Platforms
+    { x: 90, y: 726 }, // Platforms
   ];
 
   private readonly BLIP_RADIUS = 14;
@@ -80,7 +80,10 @@ export class RadarCanvasComponent implements OnInit {
   }
 
   tooltipWidth(blip: Blip): number {
-    return Math.max(this.tooltipMinWidth, blip.name.length * this.tooltipCharWidth + this.tooltipPadding * 2);
+    return Math.max(
+      this.tooltipMinWidth,
+      blip.name.length * this.tooltipCharWidth + this.tooltipPadding * 2,
+    );
   }
 
   ringLabelPos(ringIndex: number): { x: number; y: number } {
@@ -105,7 +108,7 @@ export class RadarCanvasComponent implements OnInit {
 
   private groupBlipsByQuadrantAndRing(): Map<string, Blip[]> {
     const groups = new Map<string, Blip[]>();
-    this.blips().forEach(blip => {
+    this.blips().forEach((blip) => {
       const key = `${blip.quadrant}-${blip.ring}`;
       if (!groups.has(key)) groups.set(key, []);
       groups.get(key)!.push(blip);
@@ -115,7 +118,8 @@ export class RadarCanvasComponent implements OnInit {
 
   private getRingSafeBounds(ring: number): { inner: number; outer: number } {
     const outerR = this.rings[ring] - this.BLIP_SAFE_MARGIN;
-    const innerR = ring > 0 ? this.rings[ring - 1] + this.BLIP_SAFE_MARGIN : this.ADOPT_RING_INNER_RADIUS;
+    const innerR =
+      ring > 0 ? this.rings[ring - 1] + this.BLIP_SAFE_MARGIN : this.ADOPT_RING_INNER_RADIUS;
     return {
       inner: innerR,
       outer: outerR,
@@ -128,20 +132,22 @@ export class RadarCanvasComponent implements OnInit {
     const bandSize = availableWidth / bandCount;
 
     const assignments = blips.map((_, i) => ({
-      bandIndex: (bandCount - 1) - (i % bandCount),
+      bandIndex: bandCount - 1 - (i % bandCount),
       positionInBand: Math.floor(i / bandCount),
     }));
 
-    const blipCounts = Array.from({ length: bandCount }, (_, b) =>
-      assignments.filter(a => a.bandIndex === b).length
+    const blipCounts = Array.from(
+      { length: bandCount },
+      (_, b) => assignments.filter((a) => a.bandIndex === b).length,
     );
 
     return { bandSize, blipCounts, assignments };
   }
 
   private computeArcSpreadDeg(blipCount: number, radius: number): number {
-    const minAngularGap = (this.BLIP_DIAMETER + 4) / radius * (180 / Math.PI);
-    const maxAngularGap = (this.BLIP_DIAMETER * this.ANGULAR_SPACING_FACTOR) / radius * (180 / Math.PI);
+    const minAngularGap = ((this.BLIP_DIAMETER + 4) / radius) * (180 / Math.PI);
+    const maxAngularGap =
+      ((this.BLIP_DIAMETER * this.ANGULAR_SPACING_FACTOR) / radius) * (180 / Math.PI);
 
     const minSpread = blipCount * minAngularGap;
     const maxSpread = blipCount * maxAngularGap;
@@ -161,14 +167,24 @@ export class RadarCanvasComponent implements OnInit {
     return angleDeg * (Math.PI / 180);
   }
 
-  private resolveBlipPositions(blips: Blip[], bands: BandLayout, bounds: { inner: number; outer: number }, quadrant: number): void {
+  private resolveBlipPositions(
+    blips: Blip[],
+    bands: BandLayout,
+    bounds: { inner: number; outer: number },
+    quadrant: number,
+  ): void {
     const quadrantStartAngle = this.QUADRANT_START_ANGLES[quadrant];
 
     blips.forEach((blip, i) => {
       const { bandIndex, positionInBand } = bands.assignments[i];
       const radius = bounds.inner + (bandIndex + 0.5) * bands.bandSize;
       const arcSpreadDeg = this.computeArcSpreadDeg(bands.blipCounts[bandIndex], radius);
-      const angleRad = this.computeBlipAngleRad(positionInBand, bands.blipCounts[bandIndex], arcSpreadDeg, quadrantStartAngle);
+      const angleRad = this.computeBlipAngleRad(
+        positionInBand,
+        bands.blipCounts[bandIndex],
+        arcSpreadDeg,
+        quadrantStartAngle,
+      );
 
       this.positionCache.set(blip.name, {
         x: this.cx + radius * Math.cos(angleRad),

@@ -8,7 +8,9 @@
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "lint": "oxlint",
-    "lint:fix": "oxlint --fix"
+    "lint:fix": "oxlint --fix",
+    "fmt": "oxfmt",
+    "fmt:check": "oxfmt --check"
   },
   "private": true,
   "packageManager": "pnpm@11.8.0",
@@ -26,8 +28,8 @@
     "@angular/cli": "22.0.3",
     "@angular/compiler-cli": "22.0.2",
     "jsdom": "29.1.1",
-    "oxlint": "^1.71.0",
-    "prettier": "3.8.4",
+    "oxfmt": "0.56.0",
+    "oxlint": "1.71.0",
     "typescript": "6.0.3",
     "vitest": "4.1.9"
   }

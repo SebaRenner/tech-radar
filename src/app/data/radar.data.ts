@@ -26,12 +26,14 @@ export const blips: Blip[] = [
       'Infrastructure as Code tool for provisioning and managing cloud resources declaratively.',
     ring: Ring.Trial,
     quadrant: Quadrant.Tools,
+    comment: 'I had my battles with managing Terraform state files, but in the end it\'s still my preffered tool for IaC.'
   },
   {
     name: 'Git',
     description: 'Distributed version control system for tracking changes in source code.',
     ring: Ring.Adopt,
     quadrant: Quadrant.Tools,
+    comment: 'No comment needed. Just git gud :^)'
   },
   {
     name: 'TypeScript',
@@ -73,6 +75,7 @@ export const blips: Blip[] = [
       'The practice of managing and provisioning infrastructure through machine-readable configuration files rather than manual processes.',
     ring: Ring.Adopt,
     quadrant: Quadrant.Techniques,
+    comment: 'This has become a must for me for any serious software project. ClickOps is just not manageable.',
   },
   {
     name: 'NestJS',
@@ -391,7 +394,7 @@ export const blips: Blip[] = [
   {
     name: 'NgRx',
     description:
-      'A reactive state management library for Angular applications based on the Redux pattern, using actions, reducers, selectors, and effects to manage complex application state in a predictable, testable way.',
+      'A reactive state management framework for Angular, spanning the Redux-style global Store, Signals and SignalStore for fine-grained reactive state, ComponentStore for local state, Effects for side effects, and Entity for collection management — offering a spectrum of approaches for predictable, testable state.',
     ring: Ring.Trial,
     quadrant: Quadrant.LanguagesAndFrameworks,
   },
@@ -460,6 +463,7 @@ export const blips: Blip[] = [
       'A pragmatic, lightweight template for documenting software and system architecture, structuring documentation around 12 sections covering context, building blocks, runtime behaviour, and architectural decisions.',
     ring: Ring.Assess,
     quadrant: Quadrant.Techniques,
+    comment: 'As someone who struggles to keep documentation organized I like this template. However, I experienced that the discoverablility of information to those who are not familiar with the template is not great.'
   },
   {
     name: 'Anti-Corruption Layer',

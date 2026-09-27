@@ -545,4 +545,18 @@ export const blips: Blip[] = [
     comment:
       "As someone who struggled with C++ in the past, I'm having an easier time with Rust. Nonetheless, I've never done more than some tutorials from 'The Book'.",
   },
+  {
+    name: 'ArgoCD',
+    description:
+      'A declarative GitOps continuous delivery tool for Kubernetes, enabling automated application deployment and lifecycle management by treating Git as the single source of truth for cluster state.',
+    ring: Ring.Assess,
+    quadrant: Quadrant.Tools,
+  },
+  {
+    name: 'Kafka',
+    description:
+      'A distributed event streaming platform designed for high-throughput, fault-tolerant, real-time data pipelines and event-driven architectures at scale.',
+    ring: Ring.Assess,
+    quadrant: Quadrant.Platforms,
+  },
 ];
